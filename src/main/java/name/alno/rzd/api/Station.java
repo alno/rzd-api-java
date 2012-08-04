@@ -1,6 +1,10 @@
 package name.alno.rzd.api;
 
-public class Station {
+import java.io.Serializable;
+
+public class Station implements Comparable<Station>, Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	public final String name;
 	public final long id;
@@ -15,7 +19,7 @@ public class Station {
 
 	@Override
 	public String toString() {
-		return name + "/" + id;
+		return name;
 	}
 
 	@Override
@@ -33,6 +37,15 @@ public class Station {
 		Station other = (Station) obj;
 
 		return other.id == id && other.name.equals( name );
+	}
+
+	public int compareTo( Station o ) {
+		int r = name.compareToIgnoreCase( o.name );
+
+		if ( r == 0 )
+			r = Long.compare( id, o.id );
+
+		return r;
 	}
 
 }

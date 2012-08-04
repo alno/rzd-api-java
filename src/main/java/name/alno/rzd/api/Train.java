@@ -2,13 +2,16 @@ package name.alno.rzd.api;
 
 public class Train implements Comparable<Train> {
 
-	public Train( String num, String fromTime, String toTime ) {
+	public Train( String num, String source, String destination, String departure, String arrival ) {
 		this.num = num;
-		this.fromTime = fromTime;
-		this.toTime = toTime;
+		this.source = source;
+		this.destination = destination;
+		this.departure = departure;
+		this.arrival = arrival;
 	}
 
-	public final String fromTime, toTime;
+	public final String source, destination;
+	public final String departure, arrival;
 
 	public final String num;
 
@@ -18,20 +21,24 @@ public class Train implements Comparable<Train> {
 
 		b.append( "{ " );
 		b.append( num );
-		b.append( " / " );
-		b.append( fromTime );
+		b.append( ' ' );
+		b.append( source );
 		b.append( " - " );
-		b.append( toTime );
+		b.append( destination );
+		b.append( " / " );
+		b.append( departure );
+		b.append( " - " );
+		b.append( arrival );
 		b.append( " }" );
 
 		return b.toString();
 	}
 
 	public int compareTo( Train o ) {
-		int res = fromTime.compareTo( o.fromTime );
+		int res = departure.compareTo( o.departure );
 
 		if ( res == 0 )
-			res = toTime.compareTo( o.toTime );
+			res = arrival.compareTo( o.arrival );
 
 		if ( res == 0 )
 			res = num.compareTo( o.num );
