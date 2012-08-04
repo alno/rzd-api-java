@@ -48,11 +48,11 @@ public class StationSearchService {
 
 			return results;
 		} catch ( ClientProtocolException e ) {
-			throw new ApiException("Error fetching stations due to protocol error",e);
+			throw new ApiException( "Error fetching stations due to protocol error", e );
 		} catch ( IOException e ) {
-			throw new ApiException("Error fetching stations due to IO error",e);
+			throw new ApiException( "Error fetching stations due to IO error", e );
 		} catch ( JSONException e ) {
-			throw new ApiException("Error fetching stations due to parse error",e);
+			throw new ApiException( "Error fetching stations due to parse error", e );
 		}
 	}
 
